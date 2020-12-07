@@ -763,7 +763,6 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
-  minPlayers: 2
   PartyPlayers: []
 --- !u!114 &234678960
 MonoBehaviour:

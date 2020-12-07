@@ -28,7 +28,6 @@ public class LobbyMobileConnectHandler : MonoBehaviour
     {
         NetworkManagerParty.OnClientConnected += HandleClientConnected;
         NetworkManagerParty.OnClientDisconnected += HandleClientDisconnected;
-
         if (PlayerInfo.LastUsedName != string.Empty)
         {
             NameInputField.text = PlayerInfo.LastUsedName;
@@ -61,6 +60,7 @@ public class LobbyMobileConnectHandler : MonoBehaviour
 
     public void JoinLobby() 
     {
+        PlayerInfo.LastUsedName = NameInputField.text;
         string IpAddress = IpAddressInputField.text;
         NetworkManager.networkAddress = IpAddress;
 

@@ -1,6 +1,8 @@
 ﻿using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
+
 public class LobbyMenuHandler : MonoBehaviour
 {
     [Header("Managers")]
@@ -39,15 +41,20 @@ public class LobbyMenuHandler : MonoBehaviour
 
     private void OnPlayerJoinLobby()
     {
-        UpdateLobbyUI();
+        StartCoroutine("UpdateLobbyUI");
     }
     private void OnPlayerLeaveLobby()
     {
-        UpdateLobbyUI();
+        StartCoroutine("UpdateLobbyUI");
     }
 
-    private void UpdateLobbyUI()
+
+
+
+    IEnumerator UpdateLobbyUI()
     {
+        yield return new WaitForSeconds(.1f);
+
         foreach (Image panel in PlayerPanels)
         {
             panel.color = Color.white;
@@ -59,16 +66,14 @@ public class LobbyMenuHandler : MonoBehaviour
             text.color = Color.white;
         }
 
-        Debug.Log($"Updating the UI {NetworkManager.PartyPlayers.Count}");
         int counter = new int();
 
         foreach (var player in NetworkManager.PartyPlayers)
         {
             PlayerPanels[counter].color = Color.red;
-            PlayerText[counter].text = "Player Connected";
+            PlayerText[counter].text = $"{player.GetComponent<PlayerParty>().PlayerName} Connected";
             PlayerText[counter].color = Color.black;
             counter++;
         }
     }
-
 }

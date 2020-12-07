@@ -547,7 +547,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 8275ab93dd51da988e70b3abaef8a8a3
+      Hash: a39ca27e6ac352ee7c428282de0cc2d8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerParty
@@ -835,7 +835,7 @@ ScriptsOnlyBuild:
     className: NetworkLogSettings
   - hash:
       serializedVersion: 2
-      Hash: f1c49102699cde20be6dd964ff56410a
+      Hash: d099e123490b14f41955ab9d5f4aefdb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManagerParty

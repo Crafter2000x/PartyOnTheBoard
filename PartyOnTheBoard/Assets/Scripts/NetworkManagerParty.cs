@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 public class NetworkManagerParty : NetworkManager
 {
-    [SerializeField] private int minPlayers = 2;
+    //[SerializeField] private int minPlayers = 2;
 
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
