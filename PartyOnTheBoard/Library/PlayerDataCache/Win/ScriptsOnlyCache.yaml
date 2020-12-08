@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - MainMenuMobileHandler
     - NetworkManagerParty
     - PlayerInformation
+    - PlayerMenuInputManager
     - PlayerParty
     Mirror.dll:
     - Mirror.NetworkIdentity
@@ -53,49 +54,51 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11266}
+      Script: {instanceID: 12072}
     - Class: 114
-      Script: {instanceID: 11292}
+      Script: {instanceID: 12146}
     - Class: 114
-      Script: {instanceID: 11366}
+      Script: {instanceID: 12326}
     - Class: 114
-      Script: {instanceID: 11546}
+      Script: {instanceID: 12350}
     - Class: 114
-      Script: {instanceID: 11570}
+      Script: {instanceID: 12466}
     - Class: 114
-      Script: {instanceID: 11686}
+      Script: {instanceID: 12568}
     - Class: 114
-      Script: {instanceID: 11788}
+      Script: {instanceID: 12656}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 12796}
     - Class: 114
-      Script: {instanceID: 12016}
+      Script: {instanceID: 12826}
     - Class: 114
-      Script: {instanceID: 12046}
+      Script: {instanceID: 13148}
     - Class: 114
-      Script: {instanceID: 12370}
+      Script: {instanceID: 13156}
     - Class: 114
-      Script: {instanceID: 12378}
+      Script: {instanceID: 13272}
     - Class: 114
-      Script: {instanceID: 12756}
+      Script: {instanceID: 13536}
     - Class: 114
-      Script: {instanceID: 12770}
+      Script: {instanceID: 13550}
     - Class: 114
-      Script: {instanceID: 12960}
+      Script: {instanceID: 13738}
     - Class: 114
-      Script: {instanceID: 13000}
+      Script: {instanceID: 13778}
     - Class: 114
-      Script: {instanceID: 13076}
+      Script: {instanceID: 13854}
     - Class: 114
-      Script: {instanceID: 13134}
+      Script: {instanceID: 13908}
     - Class: 114
-      Script: {instanceID: 13170}
+      Script: {instanceID: 13944}
     - Class: 114
-      Script: {instanceID: 13282}
+      Script: {instanceID: 14054}
     - Class: 114
-      Script: {instanceID: 13546}
+      Script: {instanceID: 14316}
     - Class: 114
-      Script: {instanceID: 13628}
+      Script: {instanceID: 14398}
+    - Class: 114
+      Script: {instanceID: 17296}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -113,12 +116,6 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
-  - hash:
-      serializedVersion: 2
-      Hash: 5f1752ed2092162f016c19510c28a8b9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: dac362aec30e75b5bdfe3eea60cdf384
@@ -547,7 +544,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: a39ca27e6ac352ee7c428282de0cc2d8
+      Hash: f6b742ccf20c7261d0d572a23ef91fd7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerParty
@@ -599,6 +596,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 5f1752ed2092162f016c19510c28a8b9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: 4c790fa3b7c93033baa4406ca5ac8c04
@@ -1055,7 +1058,13 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.dll
     namespaceName: kcp2k
     className: KcpTransport
+  - hash:
+      serializedVersion: 2
+      Hash: 0c89ad93a6be8e694ae12f3c6826685a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerMenuInputManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/Mobile/MainMenuMobile.unity
-  playerPath: D:/Unity Projects/PartyOnTheBoard/PartyOnTheBoard/Builds/PartyOnTheBoard.exe
+  playerPath: C:/Users/Connor/Documents/Unity Projects/PartyOnTheBoard/PartyOnTheBoard/Builds/PartyOnTheBoard.exe

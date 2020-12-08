@@ -48,11 +48,9 @@ public class LobbyMenuHandler : MonoBehaviour
         StartCoroutine("UpdateLobbyUI");
     }
 
-
-
-
     IEnumerator UpdateLobbyUI()
     {
+
         yield return new WaitForSeconds(.1f);
 
         foreach (Image panel in PlayerPanels)
@@ -70,7 +68,14 @@ public class LobbyMenuHandler : MonoBehaviour
 
         foreach (var player in NetworkManager.PartyPlayers)
         {
-            PlayerPanels[counter].color = Color.red;
+            if (player.GetComponent<PlayerParty>().Ready)
+            {
+                PlayerPanels[counter].color = Color.green;
+            }
+            else
+            {
+                PlayerPanels[counter].color = Color.red;
+            }
             PlayerText[counter].text = $"{player.GetComponent<PlayerParty>().PlayerName} Connected";
             PlayerText[counter].color = Color.black;
             counter++;

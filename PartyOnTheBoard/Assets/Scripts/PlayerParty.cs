@@ -11,8 +11,43 @@ public class PlayerParty : NetworkBehaviour
     public bool Ready;
     [Header("Player input")]
     public Vector3 Movement;
-    public bool InputA;
-    public bool InputB;
+
+    // Get a trigger from this event by subscribing to the OnVariableChangeInputA event
+    private bool b_InputA;
+    public bool InputA 
+    {
+        get { return b_InputA; }
+        set {
+            if (b_InputA == value) return;
+            b_InputA = value;
+            if (b_InputA == true)
+            {
+                if (OnVariableChangeInputA != null)
+                    OnVariableChangeInputA(b_InputA);
+            }
+        }  
+    }
+    public delegate void OnVariableChangeDelegateInputA(bool newVal);
+    public event OnVariableChangeDelegateInputA OnVariableChangeInputA;
+
+    // Get a trigger from this event by subscribing to the OnVariableChangeInputB event
+    private bool b_InputB;
+    public bool InputB
+    {
+        get { return b_InputB; }
+        set
+        {
+            if (b_InputB == value) return;
+            b_InputB = value;
+            if (b_InputB == true)
+            {
+                if (OnVariableChangeInputB != null)
+                    OnVariableChangeInputB(b_InputB);
+            }   
+        }
+    }
+    public delegate void OnVariableChangeDelegateInputB(bool newVal);
+    public event OnVariableChangeDelegateInputB OnVariableChangeInputB;
 
     private void Start()
     {
@@ -78,20 +113,12 @@ public class PlayerParty : NetworkBehaviour
     private void SendInputA(bool A)
     {
         InputA = A;
-        if (A == true)
-        {
-            Debug.Log($"Button A pressed for {gameObject.name}");
-        }
     }
 
     [Command]
     private void SendIputB(bool B)
     {
         InputB = B;
-        if (B == true)
-        {
-            Debug.Log($"Button B pressed for {gameObject.name}");
-        }
     }
 
     [Command]
