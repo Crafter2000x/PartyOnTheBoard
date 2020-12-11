@@ -14,7 +14,7 @@ public class PlayerParty : NetworkBehaviour
     public Vector3 Movement;
 
     // Get a trigger from this event by subscribing to the OnVariableChangeInputA event
-    private bool b_InputA;
+    [SerializeField] private bool b_InputA;
     public bool InputA 
     {
         get { return b_InputA; }
@@ -32,7 +32,7 @@ public class PlayerParty : NetworkBehaviour
     public event OnVariableChangeDelegateInputA OnVariableChangeInputA;
 
     // Get a trigger from this event by subscribing to the OnVariableChangeInputB event
-    private bool b_InputB;
+    [SerializeField] private bool b_InputB;
     public bool InputB
     {
         get { return b_InputB; }

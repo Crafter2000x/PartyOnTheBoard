@@ -1,19 +1,24 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp-firstpass.dll:
+    - UnityStandardAssets.CrossPlatformInput.ButtonHandler
+    - UnityStandardAssets.CrossPlatformInput.Joystick
+    - UnityStandardAssets.CrossPlatformInput.MobileControlRig
     Assembly-CSharp.dll:
-    - LobbyMenuHandler
-    - MainMenuHandler
+    - LobbyMobileConnectHandler
+    - MainMenuMobileHandler
     - NetworkManagerParty
+    - PlayerInformation
     - PlayerMenuInputManager
     - PlayerParty
     Mirror.dll:
     - Mirror.NetworkIdentity
-    - Mirror.NetworkStartPosition
     - kcp2k.KcpTransport
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
+    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
@@ -24,13 +29,19 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.Shadow
+    - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
-    Assets/Scenes/MainMenu.unity:
+    Assets/Scenes/Mobile/MainMenuMobile.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -49,28 +60,44 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11266}
     - Class: 114
+      Script: {instanceID: 11268}
+    - Class: 114
       Script: {instanceID: 11294}
     - Class: 114
-      Script: {instanceID: 11486}
+      Script: {instanceID: 11500}
     - Class: 114
       Script: {instanceID: 11544}
+    - Class: 114
+      Script: {instanceID: 11568}
+    - Class: 114
+      Script: {instanceID: 11678}
+    - Class: 114
+      Script: {instanceID: 11776}
+    - Class: 114
+      Script: {instanceID: 11864}
     - Class: 114
       Script: {instanceID: 11994}
     - Class: 114
       Script: {instanceID: 12022}
     - Class: 114
-      Script: {instanceID: 12034}
+      Script: {instanceID: 12068}
+    - Class: 114
+      Script: {instanceID: 12248}
     - Class: 114
       Script: {instanceID: 12344}
+    - Class: 114
+      Script: {instanceID: 12352}
+    - Class: 114
+      Script: {instanceID: 12362}
     - Class: 114
       Script: {instanceID: 12714}
     - Class: 114
       Script: {instanceID: 12728}
+    - Class: 114
+      Script: {instanceID: 12912}
     - Class: 114
       Script: {instanceID: 12952}
     - Class: 114
@@ -84,9 +111,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13228}
     - Class: 114
-      Script: {instanceID: 13344}
+      Script: {instanceID: 13430}
     - Class: 114
       Script: {instanceID: 13484}
+    - Class: 114
+      Script: {instanceID: 13500}
     - Class: 114
       Script: {instanceID: 13562}
     - Class: 115
@@ -450,7 +479,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: f6b742ccf20c7261d0d572a23ef91fd7
+      Hash: 2e5d6c5ec5adceb056c6cd6412b30f5a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerParty
@@ -822,5 +851,6 @@ ScriptsOnlyBuild:
     className: KcpTransport
   platform: 5
   scenePathNames:
-  - Assets/Scenes/MainMenu.unity
-  playerPath: D:/Unity Projects/PartyOnTheBoard/PartyOnTheBoard/Builds/DesktopView/PartyOnTheBoard.exe
+  - Assets/Scenes/Mobile/MainMenuMobile.unity
+  playerPath: D:/Unity Projects/PartyOnTheBoard/PartyOnTheBoard/Builds/MobileView/Party
+    On The Board.exe
