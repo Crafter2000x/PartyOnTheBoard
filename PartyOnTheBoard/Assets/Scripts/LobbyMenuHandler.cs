@@ -12,6 +12,19 @@ public class LobbyMenuHandler : MonoBehaviour
     [SerializeField] private Canvas MainMenuCanvas;
     [SerializeField] private Image[] PlayerPanels;
     [SerializeField] private TMP_Text[] PlayerText;
+    [SerializeField] private Image ReadyPanel;
+    [SerializeField] private TMP_Text ReadyText;
+
+    [Header("Lobby")]
+    [SerializeField] private int MinimumPlayers;
+    [SerializeField] private int AmountReady;
+
+    private bool CountDownIsRunnig;
+    private Color PlayerPanelColor;
+    private void Start()
+    {
+        PlayerPanelColor = PlayerPanels[0].color;
+    }
 
     private void OnEnable()
     {
@@ -51,11 +64,13 @@ public class LobbyMenuHandler : MonoBehaviour
     IEnumerator UpdateLobbyUI()
     {
 
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.3f);
+
+        AmountReady = 0;
 
         foreach (Image panel in PlayerPanels)
         {
-            panel.color = Color.white;
+            panel.color = PlayerPanelColor;
         }
 
         foreach (TMP_Text text in PlayerText)
@@ -71,6 +86,7 @@ public class LobbyMenuHandler : MonoBehaviour
             if (player.GetComponent<PlayerParty>().Ready)
             {
                 PlayerPanels[counter].color = Color.green;
+                AmountReady++;
             }
             else
             {
@@ -80,5 +96,38 @@ public class LobbyMenuHandler : MonoBehaviour
             PlayerText[counter].color = Color.black;
             counter++;
         }
+
+        if (AmountReady >= MinimumPlayers)
+        {
+            StartCoroutine("StartCountDown");
+        }
+        else if (CountDownIsRunnig)
+        {
+            StopCoroutine("StartCountDown");
+            CountDownIsRunnig = false;
+            ReadyText.text = "0";
+            ReadyPanel.gameObject.SetActive(false);
+
+        }
+    }
+
+    IEnumerator StartCountDown() 
+    {
+        CountDownIsRunnig = true;
+        ReadyPanel.gameObject.SetActive(true);
+
+        ReadyText.text = "5";
+        yield return new WaitForSeconds(1);
+        ReadyText.text = "4";
+        yield return new WaitForSeconds(1);
+        ReadyText.text = "3";
+        yield return new WaitForSeconds(1);
+        ReadyText.text = "2";
+        yield return new WaitForSeconds(1);
+        ReadyText.text = "1";
+        yield return new WaitForSeconds(1);
+        ReadyText.text = "0";
+        yield return new WaitForSeconds(1);
+        Debug.Log("Start Game");
     }
 }

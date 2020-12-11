@@ -15,6 +15,7 @@ public class LobbyMobileConnectHandler : MonoBehaviour
     [SerializeField] private TMP_InputField NameInputField;
     [SerializeField] private TMP_InputField IpAddressInputField;
     [SerializeField] private Canvas MainMenuCanvas;
+    [SerializeField] private Canvas GamePadCanvas;
     [SerializeField] private Button ConnectingButton;
     [SerializeField] private Button ReturnButton;
 
@@ -49,7 +50,7 @@ public class LobbyMobileConnectHandler : MonoBehaviour
         ConnectingButton.interactable = true;
         ReturnButton.interactable = true;
         gameObject.SetActive(false);
-
+        GamePadCanvas.gameObject.SetActive(true);
     }    
     
     private void HandleClientDisconnected() 
@@ -60,6 +61,16 @@ public class LobbyMobileConnectHandler : MonoBehaviour
 
     public void JoinLobby() 
     {
+        if (NameInputField.text == null)
+        {
+            Debug.Log("No username");
+            return; 
+        }
+        if (!ValidateIPv4(IpAddressInputField.text)) 
+        {
+            Debug.Log("Not a valid IP");
+            return; 
+        }
         PlayerInfo.LastUsedName = NameInputField.text;
         string IpAddress = IpAddressInputField.text;
         NetworkManager.networkAddress = IpAddress;
@@ -67,6 +78,24 @@ public class LobbyMobileConnectHandler : MonoBehaviour
         NetworkManager.StartClient();
         ConnectingButton.interactable = false;
         ReturnButton.interactable = false;
+    }
+
+    public bool ValidateIPv4(string ipString)
+    {
+        if (String.IsNullOrWhiteSpace(ipString))
+        {
+            return false;
+        }
+
+        string[] splitValues = ipString.Split('.');
+        if (splitValues.Length != 4)
+        {
+            return false;
+        }
+
+        byte tempForParsing;
+
+        return splitValues.All(r => byte.TryParse(r, out tempForParsing));
     }
 
 }

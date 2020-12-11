@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerParty : NetworkBehaviour
 {
@@ -62,8 +63,8 @@ public class PlayerParty : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            float HorizontalInput = Input.GetAxis("Horizontal");
-            float VerticalInput = Input.GetAxis("Vertical");
+            float HorizontalInput = CrossPlatformInputManager.GetAxis("Horizontal");
+            float VerticalInput = CrossPlatformInputManager.GetAxis("Vertical");
             Vector3 movement = new Vector3(HorizontalInput, VerticalInput, 0);
             return movement;
         }
@@ -76,7 +77,7 @@ public class PlayerParty : NetworkBehaviour
         if (isLocalPlayer)
         {
             bool InputA = new bool();
-            InputA = Input.GetButtonDown("Button A");
+            InputA = CrossPlatformInputManager.GetButtonDown("Button A");
             return InputA;
         }
         return false;
@@ -87,7 +88,7 @@ public class PlayerParty : NetworkBehaviour
         if (isLocalPlayer)
         {
             bool InputB = new bool();
-            InputB = Input.GetButtonDown("Button B");
+            InputB = CrossPlatformInputManager.GetButtonDown("Button B");
             return InputB;
         }
         return false;

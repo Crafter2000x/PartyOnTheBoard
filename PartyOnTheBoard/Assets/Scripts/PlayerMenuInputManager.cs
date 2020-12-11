@@ -29,6 +29,7 @@ public class PlayerMenuInputManager : MonoBehaviour
     private void ReadyButtonHandler(bool newVal) 
     {
         Debug.Log("Button A pressed");
+        if (Player.Ready == true) {return;}
         Player.Ready = true;
         LobbyManager.StartCoroutine("UpdateLobbyUI");
     }
@@ -36,6 +37,7 @@ public class PlayerMenuInputManager : MonoBehaviour
     private void ReadyButtonHandler1(bool newVal)
     {
         Debug.Log("Button B pressed");
+        if (Player.Ready == false) { return; }
         Player.Ready = false;
         LobbyManager.StartCoroutine("UpdateLobbyUI");
 
