@@ -15,6 +15,12 @@ public class PlayerParty : NetworkBehaviour
 
     // Get a trigger from this event by subscribing to the OnVariableChangeInputA event
     [SerializeField] private bool b_InputA;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     public bool InputA 
     {
         get { return b_InputA; }

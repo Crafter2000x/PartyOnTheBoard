@@ -65,59 +65,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11268}
     - Class: 114
-      Script: {instanceID: 11294}
+      Script: {instanceID: 11270}
     - Class: 114
-      Script: {instanceID: 11500}
+      Script: {instanceID: 11296}
     - Class: 114
-      Script: {instanceID: 11544}
+      Script: {instanceID: 11502}
     - Class: 114
-      Script: {instanceID: 11568}
+      Script: {instanceID: 11546}
     - Class: 114
-      Script: {instanceID: 11678}
+      Script: {instanceID: 11570}
     - Class: 114
-      Script: {instanceID: 11776}
+      Script: {instanceID: 11680}
     - Class: 114
-      Script: {instanceID: 11864}
+      Script: {instanceID: 11778}
     - Class: 114
-      Script: {instanceID: 11994}
+      Script: {instanceID: 11866}
     - Class: 114
-      Script: {instanceID: 12022}
+      Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12068}
+      Script: {instanceID: 12024}
     - Class: 114
-      Script: {instanceID: 12248}
+      Script: {instanceID: 12070}
     - Class: 114
-      Script: {instanceID: 12344}
+      Script: {instanceID: 12254}
     - Class: 114
-      Script: {instanceID: 12352}
+      Script: {instanceID: 12350}
     - Class: 114
-      Script: {instanceID: 12362}
+      Script: {instanceID: 12358}
     - Class: 114
-      Script: {instanceID: 12714}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 12728}
+      Script: {instanceID: 12722}
     - Class: 114
-      Script: {instanceID: 12912}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 12952}
+      Script: {instanceID: 12922}
     - Class: 114
-      Script: {instanceID: 12966}
+      Script: {instanceID: 12962}
     - Class: 114
-      Script: {instanceID: 13026}
+      Script: {instanceID: 12976}
     - Class: 114
-      Script: {instanceID: 13082}
+      Script: {instanceID: 13036}
     - Class: 114
-      Script: {instanceID: 13120}
+      Script: {instanceID: 13092}
     - Class: 114
-      Script: {instanceID: 13228}
+      Script: {instanceID: 13128}
     - Class: 114
-      Script: {instanceID: 13430}
+      Script: {instanceID: 13236}
     - Class: 114
-      Script: {instanceID: 13484}
+      Script: {instanceID: 13490}
     - Class: 114
-      Script: {instanceID: 13500}
+      Script: {instanceID: 13506}
     - Class: 114
-      Script: {instanceID: 13562}
+      Script: {instanceID: 13570}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -135,6 +135,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventTrigger
   - hash:
       serializedVersion: 2
       Hash: 5f1752ed2092162f016c19510c28a8b9
@@ -395,7 +401,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 3eb165b5f41dda12803aeb727f9ba0b3
+      Hash: 3309e7c27dff2928300f4856f12cfdad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LobbyMenuHandler
@@ -449,10 +455,22 @@ ScriptsOnlyBuild:
     className: AxisTouchButton
   - hash:
       serializedVersion: 2
+      Hash: 35dbf6729ab66b4ca096928db3f306a7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerMovementScript
+  - hash:
+      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: c9e9c9aa56f5508fe1098deaf892d2c1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameBoardManager
   - hash:
       serializedVersion: 2
       Hash: c88c4199b288356ec3eb2f0d85abc619
@@ -551,6 +569,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 4bb9cc4706973b4e091ae1efc04b2443
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NumberRollScript
+  - hash:
+      serializedVersion: 2
       Hash: 144f39e785cd2926af56aa422f7e8948
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
@@ -629,6 +653,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: 2901ca7fd83c10e482e3481280340b6f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GamePlayerInformation
+  - hash:
+      serializedVersion: 2
       Hash: ab0940c02dfd8ba53f8a398b77498868
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -689,7 +719,7 @@ ScriptsOnlyBuild:
     className: TouchPad
   - hash:
       serializedVersion: 2
-      Hash: d099e123490b14f41955ab9d5f4aefdb
+      Hash: 27bc587833d5c95d60361dbdf398ea96
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManagerParty
@@ -779,12 +809,6 @@ ScriptsOnlyBuild:
     className: NetworkProximityChecker
   - hash:
       serializedVersion: 2
-      Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventTrigger
-  - hash:
-      serializedVersion: 2
       Hash: 5dea360fb0b147724ac344e6f399c2f3
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -837,6 +861,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ToggleGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerMenuScript
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb

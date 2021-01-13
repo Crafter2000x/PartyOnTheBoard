@@ -8,12 +8,15 @@ using System.Collections.Generic;
 
 public class NetworkManagerParty : NetworkManager
 {
-    //[SerializeField] private int minPlayers = 2;
+    public bool InProgress;
 
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
-    public static event Action OnPlayerObjectCreated;
-    public static event Action OnPlayerObjectRemoved;
+
+    public static event Action OnPlayerJoinServer;
+    public static event Action OnPlayerDisconnectServer;
+
+
 
     public List<GameObject> PartyPlayers;
 
@@ -31,7 +34,7 @@ public class NetworkManagerParty : NetworkManager
 
     public override void OnServerConnect(NetworkConnection conn)
     {
-        if (numPlayers >= maxConnections)
+        if (numPlayers >= maxConnections || InProgress == true)
         {
             conn.Disconnect();
             return;
@@ -47,7 +50,7 @@ public class NetworkManagerParty : NetworkManager
 
         PartyPlayers.Add(player);
         NetworkServer.AddPlayerForConnection(conn, player);
-        OnPlayerObjectCreated?.Invoke();
+        OnPlayerJoinServer?.Invoke();
     }
 
     public override void OnServerDisconnect(NetworkConnection conn)
@@ -59,7 +62,7 @@ public class NetworkManagerParty : NetworkManager
         }
 
         base.OnServerDisconnect(conn);
-        OnPlayerObjectRemoved.Invoke();
+        OnPlayerDisconnectServer.Invoke();
     }
 
     public override void OnStopServer()

@@ -1,7 +1,10 @@
-﻿using TMPro;
+﻿using System.Net;
+using System.Net.Sockets;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LobbyMenuHandler : MonoBehaviour
 {
@@ -14,6 +17,7 @@ public class LobbyMenuHandler : MonoBehaviour
     [SerializeField] private TMP_Text[] PlayerText;
     [SerializeField] private Image ReadyPanel;
     [SerializeField] private TMP_Text ReadyText;
+    [SerializeField] private TMP_Text IpAdress;
 
     [Header("Lobby")]
     [SerializeField] private int MinimumPlayers;
@@ -29,20 +33,37 @@ public class LobbyMenuHandler : MonoBehaviour
     private void OnEnable()
     {
 
-        NetworkManagerParty.OnPlayerObjectCreated += OnPlayerJoinLobby;
-        NetworkManagerParty.OnPlayerObjectRemoved += OnPlayerLeaveLobby;
+        NetworkManagerParty.OnPlayerJoinServer += OnPlayerJoinLobby;
+        NetworkManagerParty.OnPlayerDisconnectServer += OnPlayerLeaveLobby;
         HostGame();
     }
 
     private void OnDisable()
     {
-        NetworkManagerParty.OnPlayerObjectCreated -= OnPlayerJoinLobby;
-        NetworkManagerParty.OnPlayerObjectRemoved -= OnPlayerLeaveLobby;
+        NetworkManagerParty.OnPlayerJoinServer -= OnPlayerJoinLobby;
+        NetworkManagerParty.OnPlayerDisconnectServer -= OnPlayerLeaveLobby;
     }
 
     public void HostGame()
     {
         NetworkManager.StartServer();
+        IpAdress.text = LocalIPAddress();
+    }
+
+    public string LocalIPAddress()
+    {
+        IPHostEntry host;
+        string localIP = "";
+        host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (IPAddress ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                localIP = ip.ToString();
+                break;
+            }
+        }
+        return localIP;
     }
 
     public void ExitLobby()
@@ -97,17 +118,17 @@ public class LobbyMenuHandler : MonoBehaviour
             counter++;
         }
 
-        if (AmountReady >= MinimumPlayers)
-        {
-            StartCoroutine("StartCountDown");
-        }
-        else if (CountDownIsRunnig)
+        if (CountDownIsRunnig == true)
         {
             StopCoroutine("StartCountDown");
             CountDownIsRunnig = false;
             ReadyText.text = "0";
             ReadyPanel.gameObject.SetActive(false);
+        }
 
+        if (AmountReady >= MinimumPlayers)
+        {
+            StartCoroutine("StartCountDown");
         }
     }
 
@@ -129,5 +150,13 @@ public class LobbyMenuHandler : MonoBehaviour
         ReadyText.text = "0";
         yield return new WaitForSeconds(1);
         Debug.Log("Start Game");
+
+        foreach (var Player in NetworkManager.PartyPlayers)
+        {
+            Destroy(Player.GetComponent<PlayerMenuInputManager>());
+        }
+
+        NetworkManager.InProgress = true;
+        SceneManager.LoadScene("GameBoardOne");
     }
 }

@@ -9,8 +9,6 @@ public class PlayerMenuInputManager : MonoBehaviour
     [SerializeField] private PlayerParty Player;
     [SerializeField] private LobbyMenuHandler LobbyManager;
 
-
-
     private void Start()
     {
         if (SceneManager.GetActiveScene().name.ToString() == "MainMenu")
@@ -43,5 +41,9 @@ public class PlayerMenuInputManager : MonoBehaviour
 
     }
 
-
+    private void OnDestroy()
+    {
+        Player.OnVariableChangeInputA -= ReadyButtonHandler;
+        Player.OnVariableChangeInputB -= ReadyButtonHandler1;
+    }
 }
