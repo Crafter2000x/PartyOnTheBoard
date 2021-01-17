@@ -1447,6 +1447,7 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs: []
+  InProgress: 0
   PartyPlayers: []
 --- !u!1 &654963477
 GameObject:
@@ -3737,5 +3738,5 @@ MonoBehaviour:
   ReadyPanel: {fileID: 132575944}
   ReadyText: {fileID: 457951203}
   IpAdress: {fileID: 155740237}
-  MinimumPlayers: 1
+  MinimumPlayers: 2
   AmountReady: 0

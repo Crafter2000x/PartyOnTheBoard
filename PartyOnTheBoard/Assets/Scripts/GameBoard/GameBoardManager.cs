@@ -10,6 +10,8 @@ public class GameBoardManager : MonoBehaviour
     public NetworkManagerParty NetworkManager;
     [Header("Player Managment")]
     public List<GameObject> PlayerList;
+    [Header("Minigames")]
+    public List<GameObject> MiniGames;
     [Header("Object Reference")]
     [SerializeField] private GameObject GameBoardPlayer;
     [SerializeField] private GameObject MessageBox;
@@ -17,11 +19,14 @@ public class GameBoardManager : MonoBehaviour
     [SerializeField] private GameObject DiceRollCanvas;
     [SerializeField] private Transform[] DiceRollLocations;
     [SerializeField] private Transform PlayersObject;
+    [SerializeField] private Transform SceneObject;
+    [SerializeField] private Transform MiniGamesObject;
 
     public enum GamesStates 
     {
         GameSetup,
         TurnLoop,
+        MiniGame,
     }
 
     public GamesStates GameState;
@@ -41,6 +46,9 @@ public class GameBoardManager : MonoBehaviour
                 break;
             case GamesStates.TurnLoop:
                 TurnLoop();
+                break;
+            case GamesStates.MiniGame:
+                MiniGame();
                 break;
         }
     }
@@ -151,14 +159,13 @@ public class GameBoardManager : MonoBehaviour
             GameObject.Destroy(SpawndObject.gameObject);
             SpawndObject = null;
 
-            Debug.Log("Do action or move player stuff");
             yield return new WaitForSeconds(6);
             PlayerInfo.CurrentRoll = 0;
             PlayerInfo = null;
         }
 
-
-        Debug.Log("Now a minigame should start");
+        GameState = GamesStates.MiniGame;
+        GameLoop();
     }
 
     bool HasPlayerRolled() 
@@ -170,6 +177,36 @@ public class GameBoardManager : MonoBehaviour
 
         return true;
     }
+    #endregion
+
+    #region Minigames
+    private void MiniGame() 
+    {
+        DisplayMessage("Minigame time!!", 5);
+        StartCoroutine("MiniGameStart");
+    }
+
+    IEnumerator MiniGameStart() 
+    {
+        int RandomInt;
+        GameObject SpanwedObject;
+
+        yield return new WaitUntil(MessageBoxEnabled);
+
+        RandomInt = Random.Range(0, MiniGames.Count);
+
+        SceneObject.gameObject.SetActive(false);
+        SpanwedObject = Instantiate(MiniGames[RandomInt], MiniGamesObject);
+
+        yield return new WaitUntil(MiniGameFinished);
+
+    }
+
+    bool MiniGameFinished() 
+    {
+        return false;
+    }
+
     #endregion
 
     #region Error Handeling
