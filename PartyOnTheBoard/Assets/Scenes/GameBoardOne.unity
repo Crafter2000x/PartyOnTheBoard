@@ -3524,9 +3524,7 @@ MonoBehaviour:
   NetworkManager: {fileID: 0}
   PlayerList: []
   MiniGames:
-  - {fileID: 808906407382958294, guid: 6c39e62d2bf4b1341865c5dafab618cc, type: 3}
-  - {fileID: 6406064922201752878, guid: 4349f6b6bfa615348b9328e0f4bbece9, type: 3}
-  - {fileID: 662403689297429478, guid: ea6830e646a2d1c4aa48bd376448ae06, type: 3}
+  - {fileID: 1894238294673085735, guid: 7fb60c4af4355b847a3a56645f1ebd8b, type: 3}
   MainCamera: {fileID: 803202567}
   GameBoardPlayer: {fileID: 3471354836341719013, guid: 25a1414d2d2a6874ab54c4a3ab1c855f,
     type: 3}

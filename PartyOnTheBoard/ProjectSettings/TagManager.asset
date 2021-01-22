@@ -3,7 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Vuur
+  - Conveyor
+  - Player2
+  - Player1
+  - Player3
+  - Player4
+  - Team1
+  - Team2
+  - Button
+  - Doos
+  - otherplayer
+  - floor
+  - Canvas
+  - Balloon Type 1
+  - Balloon Type 2
+  - meteoor
+  - life
+  - Door
+  - P1
+  - P2
+  - P3
+  - P4
   layers:
   - Default
   - TransparentFX
