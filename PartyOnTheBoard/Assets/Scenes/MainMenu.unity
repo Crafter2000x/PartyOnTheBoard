@@ -1416,7 +1416,7 @@ MonoBehaviour:
   CongestionWindow: 1
   SendWindowSize: 128
   ReceiveWindowSize: 128
-  debugGUI: 1
+  debugGUI: 0
 --- !u!114 &605202330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3738,5 +3738,5 @@ MonoBehaviour:
   ReadyPanel: {fileID: 132575944}
   ReadyText: {fileID: 457951203}
   IpAdress: {fileID: 155740237}
-  MinimumPlayers: 2
+  MinimumPlayers: 1
   AmountReady: 0

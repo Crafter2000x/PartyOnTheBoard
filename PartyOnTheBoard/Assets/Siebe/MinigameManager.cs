@@ -153,13 +153,28 @@ public class MinigameManager : MonoBehaviour
 
         }
         else
-        {
-            
+        {      
             timerText.enabled = false;
             aliveText1.enabled = false;
             aliveText2.enabled = false;
             aliveText3.enabled = false;
+            StartCoroutine("DeleteAll");
         }
+    }
+
+    IEnumerator DeleteAll()
+    {
+        yield return new WaitForSeconds(10);
+        foreach (GameObject item in FindObjectsOfType(typeof(GameObject)))
+        {
+            if (item.GetComponent<DoosCollide>() != null)
+            {
+                Destroy(item.gameObject);
+            }
+           
+        }
+        
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     void Counters()

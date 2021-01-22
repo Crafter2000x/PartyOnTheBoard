@@ -13,14 +13,18 @@ public class GameBoardManager : MonoBehaviour
     [Header("Minigames")]
     public List<GameObject> MiniGames;
     [Header("Object Reference")]
+    [SerializeField] private Camera MainCamera;
     [SerializeField] private GameObject GameBoardPlayer;
+    [SerializeField] private GameObject BoardObject;
     [SerializeField] private GameObject MessageBox;
     [SerializeField] private GameObject DiceRollObject;
     [SerializeField] private GameObject DiceRollCanvas;
     [SerializeField] private Transform[] DiceRollLocations;
+    [SerializeField] private GameObject[] StartingLocations;
     [SerializeField] private Transform PlayersObject;
     [SerializeField] private Transform SceneObject;
     [SerializeField] private Transform MiniGamesObject;
+    [SerializeField] private GameTileScript FirstTile;
 
     public enum GamesStates 
     {
@@ -58,14 +62,23 @@ public class GameBoardManager : MonoBehaviour
     {
         NetworkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManagerParty>();
 
+        int counter = 0;
+        GameObject SpawnedObject;
         GameObject SpawndObject;
         foreach (var Player in NetworkManager.PartyPlayers)
         {
             SpawndObject = Instantiate(GameBoardPlayer);
             SpawndObject.GetComponent<GamePlayerInformation>().PlayerNetworkClone = Player;
             PlayerList.Add(SpawndObject);
-        }
 
+            SpawnedObject = Instantiate(BoardObject);
+            SpawnedObject.transform.parent = StartingLocations[counter].transform;
+            SpawnedObject.transform.localPosition = new Vector3(0, 0, 0);
+            SpawnedObject.GetComponent<PlayerObjectMovmentScript>().ConnectedPlayer = SpawndObject.GetComponent<GamePlayerInformation>();
+            SpawndObject.GetComponent<GamePlayerInformation>().BoardObject = SpawnedObject.GetComponent<PlayerObjectMovmentScript>();
+            SpawnedObject.GetComponent<PlayerObjectMovmentScript>().NextTile = FirstTile;
+            counter++;
+        }
         StartCoroutine("DecideTurnOrder");
         // Decide the order in what players go
     }
@@ -140,11 +153,12 @@ public class GameBoardManager : MonoBehaviour
     IEnumerator OneTurnLoop() 
     {
         GameObject SpawndObject;
+        MainCamera.enabled = false;
 
         foreach (var Player in PlayerList)
         {
-
             PlayerInfo = Player.GetComponent<GamePlayerInformation>();
+            PlayerInfo.BoardObject.SwitchCam();
             DisplayMessage($"{PlayerInfo.PlayerName} his turn!", 2);
 
             yield return new WaitUntil(MessageBoxEnabled);
@@ -159,13 +173,28 @@ public class GameBoardManager : MonoBehaviour
             GameObject.Destroy(SpawndObject.gameObject);
             SpawndObject = null;
 
-            yield return new WaitForSeconds(6);
+            PlayerInfo.PlayerDoneMoving = false;
+            Player.GetComponent<GamePlayerInformation>().BoardObject.MovePlayerOnBoard();
+
+            yield return new WaitUntil(PlayerMoved);
+            PlayerInfo.BoardObject.SwitchCam();
+
             PlayerInfo.CurrentRoll = 0;
             PlayerInfo = null;
         }
 
+        MainCamera.enabled = true;
         GameState = GamesStates.MiniGame;
         GameLoop();
+    }
+    bool PlayerMoved() 
+    {
+        if (PlayerInfo.PlayerDoneMoving == true)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     bool HasPlayerRolled() 
@@ -200,10 +229,17 @@ public class GameBoardManager : MonoBehaviour
 
         yield return new WaitUntil(MiniGameFinished);
 
+        SceneObject.gameObject.SetActive(true);
+        GameState = GamesStates.TurnLoop;
+        GameLoop();
     }
 
     bool MiniGameFinished() 
     {
+        if (MiniGamesObject.childCount == 0)
+        {
+            return true;
+        }
         return false;
     }
 
@@ -261,4 +297,6 @@ public class GameBoardManager : MonoBehaviour
         NetworkManagerParty.OnPlayerDisconnectServer -= NetworkDisconnectHandler;
     }
     #endregion
+
+    // Het aan en uitzetten van de camera bij spelers, minigames eindige 
 }

@@ -90,7 +90,6 @@ public class MiniGameManagerMeteor : MonoBehaviour
 
     void Update()
     {
-
         if (deadplayers.Count == 4)
         {
             Player1.instance.col1.enabled = true;
@@ -140,7 +139,15 @@ public class MiniGameManagerMeteor : MonoBehaviour
 
                 i++;
             }
+
+            StartCoroutine("DeleteAll");
         }
+    }
+
+    IEnumerator DeleteAll() 
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject);
     }
 
     private void MakeInstance()

@@ -180,8 +180,15 @@ public class MiniGameManager : MonoBehaviour
         {
             team2Win = true;
         }
+
+        StartCoroutine("DeleteAll");
     }
 
+    IEnumerator DeleteAll() 
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject.transform.parent.gameObject);
+    }
 
     private GameBoardManager GameBoardManager;
     private void AssignPlayers() 

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3471354836341719009}
   - component: {fileID: 4544165812329936438}
-  - component: {fileID: -1068011913698443654}
   m_Layer: 0
   m_Name: GameBoardPlayer
   m_TagString: Untagged
@@ -45,17 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerName: 
+  FirstRoll: 0
+  CurrentRoll: 0
+  MyTurn: 0
   PlayerNetworkClone: {fileID: 0}
   PlayerInput: {fileID: 0}
---- !u!114 &-1068011913698443654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3471354836341719013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39e68cdf9f9b8e14088632b65abf4bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

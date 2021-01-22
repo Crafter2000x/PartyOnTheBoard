@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GamePlayerInformation : MonoBehaviour
 {
-    [Header("Player Informatio")]
+    [Header("Player Information")]
     public string PlayerName;
     public int FirstRoll = 0;
     public int CurrentRoll = 0;
-    public bool MyTurn = false;
+    public bool PlayerDoneMoving = true;
+    public PlayerObjectMovmentScript BoardObject;
     [Header("Network Information")]
     public GameObject PlayerNetworkClone;
     public PlayerParty PlayerInput;
